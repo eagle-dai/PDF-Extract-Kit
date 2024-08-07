@@ -48,5 +48,10 @@ Follow instructions in models/README.md
 # Run
 ```cmd
 set KMP_DUPLICATE_LIB_OK=TRUE
+
+# example pdf - multiples pages, with various layouts and contents Output will be saved in output folder
 python pdf_extract.py --pdf assets/examples/example.pdf
+
+# simple sample pdf
+python pdf_extract.py --pdf assets/examples/sample.pdf
 ```
