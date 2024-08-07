@@ -151,7 +151,10 @@ if __name__ == '__main__':
         # Formula recognition, collect all formula images in whole pdf file, then batch infer them.
         a = time.time()  
         dataset = MathDataset(mf_image_list, transform=mfr_transform)
-        dataloader = DataLoader(dataset, batch_size=128, num_workers=32)
+
+        # MYCHANGE: if on windows, num_workers should be 0
+        num_workers = 32 if os.name != 'nt' else 0
+        dataloader = DataLoader(dataset, batch_size=128, num_workers=num_workers)
         mfr_res = []
         for imgs in dataloader:
             imgs = imgs.to(device)
